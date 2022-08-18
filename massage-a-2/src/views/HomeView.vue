@@ -2,43 +2,11 @@
   <div>
     <el-container>
       <el-header>
-        <div class="top-left" style="display: flex">
-          <img src="/favicon.ico" alt="" />
-          <el-menu
-            default-active="1"
-            class="el-menu-demo"
-            mode="horizontal"
-            background-color="#3078eb"
-            text-color="#bdcff4"
-            active-text-color="#fff"
-          >
-            <el-menu-item
-              :index="item.id"
-              v-for="item in topList"
-              :key="item.id"
-              ><i :class="item.icon"></i> {{ item.name }}</el-menu-item
-            >
-          </el-menu>
-        </div>
-        <div style="display: flex; align-items: center">
-          <img src="/favicon.ico" alt="" />
-          <i class="el-icon-caret-bottom" style="color: #fff"></i>
-        </div>
+        <myHeader :topList="topList"></myHeader>
       </el-header>
       <el-container>
         <el-aside width="200px">
-          <el-menu
-            default-active="/faculty"
-            class="el-menu-vertical-demo"
-            background-color="#fff"
-            text-color="#333"
-            active-text-color="#39f"
-            router
-          >
-            <el-menu-item :index="item.path" v-for="item in leftList" :key="item.id">
-              <span slot="title">{{item.title}}</span>
-            </el-menu-item>
-          </el-menu>
+          <broadside :leftList="leftList"></broadside>
         </el-aside>
         <el-main>
           <router-view></router-view>
@@ -49,9 +17,14 @@
 </template>
 
 <script>
+import broadside from '../components/broadside.vue'
+import myHeader from '../components/myHeader.vue'
 export default {
   name: "",
-  components: {},
+  components: {
+    broadside,
+    myHeader
+  },
   data() {
     return {
       topList: [
@@ -130,24 +103,7 @@ export default {
 .el-header,
 .el-footer {
   background-color: #3078eb;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .top-left {
-    align-items: center;
-    img {
-      margin-right: 30px;
-      width: 80px;
-      height: 30px;
-    }
-  }
-}
-
-.el-aside {
-  color: #333;
-  text-align: center;
-  min-height: calc(100vh - 60px);
+  height: 60px;  
 }
 
 .el-main {

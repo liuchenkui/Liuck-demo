@@ -12,10 +12,7 @@ Mock.mock('/api/user',{
             created_at: "@date()", // 随机生成日期
             'status|0-1': 0,
             mobile: /^1[34578]\d{9}$/,
-            avatar() {
-                //用户头像
-                return Mock.Random.image('30×30',Mock.Random.color(),'#757575','png',this.nickName)
-            }
+            avatar:"@image('200×100','#50B347','#fff','avatar')"
         }
     ]
 })

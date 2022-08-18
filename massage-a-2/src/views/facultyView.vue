@@ -50,12 +50,12 @@
           tableData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
         "
         border
-        style="width: 100%; margin-top: 10px"
+        style="width: 100%; margin-top: 10px;"
       >
         <el-table-column type="selection" width="55"> </el-table-column>
         <el-table-column prop="nickname" label="学生名称">
           <template slot-scope="scope">
-            <div style="display: flex; align-items: center">
+            <div style="display: flex; align-items: center;">
               <img :src="scope.row.avatar" alt="" />
               <span style="margin-left: 10px">{{ scope.row.nickname }}</span>
             </div>
@@ -69,15 +69,15 @@
         </el-table-column>
         <el-table-column prop="created_at" label="创建时间">
           <!-- <template slot-scope="scope">
-            {{ new Date(scope.row.created_at * 1000).toLocaleString() }} -->
-          <!-- </template> -->
+            {{ new Date(scope.row.created_at * 1000).toLocaleString() }}
+          </template> -->
         </el-table-column>
-        <el-table-column fixed="right" label="操作" width="230">
+        <el-table-column fixed="right" label="操作" width="300">
           <template slot-scope="scope">
-            <el-button type="text" size="small">详情</el-button>
-            <el-button type="text" size="small">编辑</el-button>
-            <el-button type="text" size="small">禁用</el-button>
-            <el-button type="text" size="small">删除</el-button>
+            <el-button type="text" size="small">详情</el-button> -
+            <el-button type="text" size="small">编辑</el-button> -
+            <el-button type="text" size="small">禁用</el-button> -
+            <el-button type="text" size="small">删除</el-button> -
             <el-button type="text" size="small">重制密码</el-button>
           </template>
         </el-table-column>
@@ -195,5 +195,11 @@ export default {
 }
 .el-row {
   font-size: 14px;
+}
+.el-table{
+  text-align: center !important;
+  .el-button{
+    margin: 0;
+  }
 }
 </style>
