@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <fullscreen :fullscreen.sync="$store.state.fullscreen">
-      <router-view />
-    </fullscreen>
+    <router-view />
   </div>
 </template>
+
 <script>
 export default {
 }
 </script>
+
 <style lang="scss">
 * {
   margin: 0;

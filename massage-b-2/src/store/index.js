@@ -1,22 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import tab from "./tab"
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  namespace:true,
   state: {
     tags: [],
-    tableData: [],
-    arr: []
+    arr: [],
+    fullscreen:false
   },
   getters: {
   },
   mutations: {
     // 删除tag标签
     delTag(state,index){
-      state.tags.splice(index,1)
       state.arr.splice(index,1)
+      state.tags.splice(index,1)
     },
     // 添加tag标签
     handleSelect(state,obj) {

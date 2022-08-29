@@ -49,4 +49,7 @@ export default {
     height: 30px;
   }
 }
+.el-menu{
+  margin-left: 80px;
+}
 </style>

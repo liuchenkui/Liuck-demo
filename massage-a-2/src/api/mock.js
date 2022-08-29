@@ -1,5 +1,7 @@
-import Mock from 'mockjs'
 // 导入mockjs
+import Mock from 'mockjs'
+
+// 请求响应时间
 Mock.setup({
     timeout: '200-400'
 })
@@ -14,5 +16,25 @@ Mock.mock('/api/user',{
             mobile: /^1[34578]\d{9}$/,
             avatar:"@image('200×100','#50B347','#fff','avatar')"
         }
+    ]
+})
+
+Mock.mock('/api/list',{
+    'data': [
+        {
+            id: "1",
+            name: "学员管理",
+            path: "/faculty",
+        },
+        {
+            id: "1",
+            name: "讲师管理",
+            path: "/trainer",
+        },
+        {
+            id: "3",
+            name: "助教管理",
+            path: "/assistant",
+        },
     ]
 })

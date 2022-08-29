@@ -12,6 +12,30 @@ const routes = [
     redirect: "/table",
     children: [
       {
+        path: "/books",
+        name: "books",
+        meta: {
+          name: "图书管理"
+        },
+        component: () => import("../views/books.vue")
+      },
+      {
+        path: "/Backstage",
+        name: "Backstage",
+        meta: {
+          name: "后台管理"
+        },
+        component: () => import("../views/Backstage.vue")
+      },
+      {
+        path: "/Internation",
+        name: "Internation",
+        meta: {
+          name: "国际化"
+        },
+        component: () => import("../views/Internation.vue")
+      },
+      {
         path: "/table",
         name: "Table",
         meta: {
@@ -26,7 +50,6 @@ const routes = [
           name: "tab选项卡"
         },
         component: () => import("../views/tabView.vue")
-
       }
     ]
   }

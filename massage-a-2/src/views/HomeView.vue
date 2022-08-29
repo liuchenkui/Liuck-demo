@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import broadside from '../components/broadside.vue'
-import myHeader from '../components/myHeader.vue'
+import broadside from "../components/broadside.vue";
+import myHeader from "../components/myHeader.vue";
 export default {
   name: "",
   components: {
     broadside,
-    myHeader
+    myHeader,
   },
   data() {
     return {
@@ -74,26 +74,13 @@ export default {
           icon: "el-icon-setting",
         },
       ],
-      leftList: [
-        {
-          id: 1,
-          title:"学院管理",
-          path:"/faculty"
-        },
-        {
-          id: 2,
-          title:"讲师管理",
-          path:"/trainer"
-        },
-        {
-          id: 3,
-          title:"助教管理",
-          path:"/assistant"
-        }
-      ]
+      leftList: [],
     };
   },
   created() {
+    this.$axios.get("/api/list").then((res) => {
+      this.leftList = res.data.data;
+    });
   },
   mounted() {},
   methods: {},
@@ -103,7 +90,7 @@ export default {
 .el-header,
 .el-footer {
   background-color: #3078eb;
-  height: 60px;  
+  height: 60px;
 }
 
 .el-main {

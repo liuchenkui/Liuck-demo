@@ -9,15 +9,7 @@
           <Side :isCollapse="isCollapse" @handleSelect="handleSelect" />
         </el-aside>
         <el-main>
-          <el-tag
-            v-for="tag,index in $store.state.tags"
-            :key="index"
-            closable
-            @click="selectTag(tag)"
-            @close="delTag(index)"
-          >
-            {{ tag == "/table" ? "基础表格" : "tab选项卡" }}
-          </el-tag>
+         <Main @selectTag="selectTag" @delTag="delTag"></Main>
           <!-- 坑 -->
           <router-view />
         </el-main>
@@ -29,11 +21,13 @@
 <script>
 import myHeader from "../components/myHeader.vue";
 import Side from "../components/side.vue";
+import Main from "../components/Main.vue";
 export default {
   name: "",
   components: {
     myHeader,
     Side,
+    Main
   },
   data() {
     return {
@@ -47,18 +41,18 @@ export default {
     },
     // 切换tag页
     selectTag(name) {
-      if(this.$route.path == name){
-        return
+      if (this.$route.path == name) {
+        return;
       }
       this.$router.push(name);
     },
     // 删除tag标签
-    delTag(index){
-      this.$store.commit("delTag",index)
+    delTag(index) {
+      this.$store.commit("delTag", index);
     },
     // 添加tag标签
     handleSelect(key, keyPath) {
-      this.$store.commit('handleSelect',keyPath[0])
+      this.$store.commit("handleSelect", keyPath[0]);
     },
   },
   created() {},
@@ -80,7 +74,6 @@ export default {
 
 .el-aside {
   color: #333;
-  text-align: center;
   min-height: calc(100vh - 60px);
 }
 

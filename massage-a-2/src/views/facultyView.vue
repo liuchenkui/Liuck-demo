@@ -45,17 +45,11 @@
         <el-button type="primary">批量导出</el-button>&nbsp
         <el-button type="primary">查看报表</el-button>
       </div>
-      <el-table
-        :data="
-          tableData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
-        "
-        border
-        style="width: 100%; margin-top: 10px;"
-      >
+      <el-table :data="tableData1" border style="width: 100%; margin-top: 10px">
         <el-table-column type="selection" width="55"> </el-table-column>
         <el-table-column prop="nickname" label="学生名称">
           <template slot-scope="scope">
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center">
               <img :src="scope.row.avatar" alt="" />
               <span style="margin-left: 10px">{{ scope.row.nickname }}</span>
             </div>
@@ -126,6 +120,14 @@ export default {
       ],
     };
   },
+  computed: {
+    tableData1() {
+      return this.tableData.slice(
+        (this.currentPage - 1) * this.pageSize,
+        this.currentPage * this.pageSize
+      );
+    },
+  },
   created() {
     // this.$axios.get("/list.json").then((res) => {
     //   // console.log(res);
@@ -133,7 +135,7 @@ export default {
     //   this.list = res.data
     // });
     this.$axios.get("/api/user").then((res) => {
-      console.log(res);
+      // console.log(res);
       this.tableData = res.data.data;
       this.list = res.data.data;
     });
@@ -196,9 +198,9 @@ export default {
 .el-row {
   font-size: 14px;
 }
-.el-table{
+.el-table {
   text-align: center !important;
-  .el-button{
+  .el-button {
     margin: 0;
   }
 }

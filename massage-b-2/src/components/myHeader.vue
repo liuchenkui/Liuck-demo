@@ -9,7 +9,7 @@
       <h2>后台管理系统</h2>
     </div>
     <div>
-      <i class="el-icon-full-screen" style="font-size: 25px"></i>
+        <i class="el-icon-full-screen" style="font-size: 25px" @click="toggle"></i>
     </div>
   </div>
 </template>
@@ -27,7 +27,10 @@ export default {
   methods: {
     changeIscoll(){
       this.$emit('changeIscoll')
-    }
+    },
+    toggle(){
+        this.$store.state.fullscreen = !this.$store.state.fullscreen
+      }
   },
 };
 </script>
